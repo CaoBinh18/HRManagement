@@ -1,0 +1,17 @@
+D:\HRManagement\HRManagement.Service\bin\Debug\net5.0\HRManagement.Service.deps.json
+D:\HRManagement\HRManagement.Service\bin\Debug\net5.0\HRManagement.Service.dll
+D:\HRManagement\HRManagement.Service\bin\Debug\net5.0\ref\HRManagement.Service.dll
+D:\HRManagement\HRManagement.Service\bin\Debug\net5.0\HRManagement.Service.pdb
+D:\HRManagement\HRManagement.Service\bin\Debug\net5.0\HRManagement.Domain.dll
+D:\HRManagement\HRManagement.Service\bin\Debug\net5.0\HRManagement.Repository.dll
+D:\HRManagement\HRManagement.Service\bin\Debug\net5.0\HRManagement.Domain.pdb
+D:\HRManagement\HRManagement.Service\bin\Debug\net5.0\HRManagement.Repository.pdb
+D:\HRManagement\HRManagement.Service\obj\Debug\net5.0\HRManagement.Service.csproj.AssemblyReference.cache
+D:\HRManagement\HRManagement.Service\obj\Debug\net5.0\HRManagement.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\HRManagement\HRManagement.Service\obj\Debug\net5.0\HRManagement.Service.AssemblyInfoInputs.cache
+D:\HRManagement\HRManagement.Service\obj\Debug\net5.0\HRManagement.Service.AssemblyInfo.cs
+D:\HRManagement\HRManagement.Service\obj\Debug\net5.0\HRManagement.Service.csproj.CoreCompileInputs.cache
+D:\HRManagement\HRManagement.Service\obj\Debug\net5.0\HRManagement.Service.csproj.CopyComplete
+D:\HRManagement\HRManagement.Service\obj\Debug\net5.0\HRManagement.Service.dll
+D:\HRManagement\HRManagement.Service\obj\Debug\net5.0\ref\HRManagement.Service.dll
+D:\HRManagement\HRManagement.Service\obj\Debug\net5.0\HRManagement.Service.pdb

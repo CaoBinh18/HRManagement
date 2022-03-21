@@ -1,0 +1,15 @@
+D:\HRManagement\HRManagement.Repository\bin\Debug\net5.0\HRManagement.Repository.deps.json
+D:\HRManagement\HRManagement.Repository\bin\Debug\net5.0\HRManagement.Repository.dll
+D:\HRManagement\HRManagement.Repository\bin\Debug\net5.0\ref\HRManagement.Repository.dll
+D:\HRManagement\HRManagement.Repository\bin\Debug\net5.0\HRManagement.Repository.pdb
+D:\HRManagement\HRManagement.Repository\bin\Debug\net5.0\HRManagement.Domain.dll
+D:\HRManagement\HRManagement.Repository\bin\Debug\net5.0\HRManagement.Domain.pdb
+D:\HRManagement\HRManagement.Repository\obj\Debug\net5.0\HRManagement.Repository.csproj.AssemblyReference.cache
+D:\HRManagement\HRManagement.Repository\obj\Debug\net5.0\HRManagement.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\HRManagement\HRManagement.Repository\obj\Debug\net5.0\HRManagement.Repository.AssemblyInfoInputs.cache
+D:\HRManagement\HRManagement.Repository\obj\Debug\net5.0\HRManagement.Repository.AssemblyInfo.cs
+D:\HRManagement\HRManagement.Repository\obj\Debug\net5.0\HRManagement.Repository.csproj.CoreCompileInputs.cache
+D:\HRManagement\HRManagement.Repository\obj\Debug\net5.0\HRManagement.Repository.csproj.CopyComplete
+D:\HRManagement\HRManagement.Repository\obj\Debug\net5.0\HRManagement.Repository.dll
+D:\HRManagement\HRManagement.Repository\obj\Debug\net5.0\ref\HRManagement.Repository.dll
+D:\HRManagement\HRManagement.Repository\obj\Debug\net5.0\HRManagement.Repository.pdb

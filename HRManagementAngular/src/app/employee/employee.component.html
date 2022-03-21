@@ -1,0 +1,190 @@
+<div class="container">
+  <div class="row">
+    <div class="left-side-menu col-3">
+      <kendo-treeview kendoTreeViewHierarchyBinding [filterable]="true" kendoTreeViewExpandable 
+        [expandOnFilter]="filterExpandSettings" [nodes]="data"
+        childrenField="children" textField="name" valueField="id" kendoTreeViewSelectable
+        (selectionChange)="handleClickNode($event)"></kendo-treeview>
+    </div>
+
+    <div class="main-content col-9">
+      <!-- <kendo-grid [data]="(gridItems | async)!" -->
+      <kendo-grid [resizable]="true" [kendoGridBinding]="gridItems" [pageSize]="5" [skip]="skip"
+        [sort]="sortDescriptor" [sortable]="true" [sortable]="true" [pageable]="true" [filterable]="true" 
+        (pageChange)="pageChange($event)" (sortChange)="handleSortChange($event)" 
+        (edit)="getEmployee($event)" (remove)="removeHandler($event)">
+
+        <ng-template kendoGridToolbarTemplate > 
+          <kendo-grid-spacer></kendo-grid-spacer>
+          <button kendoButton [icon]="'k-icon k-i-plus'" fillMode="flat" data-bs-toggle="modal"
+          data-bs-target="#createModal" (click)="showFormCreate()" style="color: blueviolet;">Thêm</button>
+        </ng-template>
+
+        <kendo-grid-column [headerStyle]="{'font-weight' : 'bold'}" field="id" title="Mã nhân viên">
+        </kendo-grid-column>
+        <kendo-grid-column [headerStyle]="{'font-weight' : 'bold'}" field="fullname" title="Họ và tên">
+        </kendo-grid-column>
+        <kendo-grid-column [headerStyle]="{'font-weight' : 'bold'}" field="department.name" title="Tên phòng ban">
+        </kendo-grid-column>
+        <kendo-grid-column [headerStyle]="{'font-weight' : 'bold'}" field="position" title="Chức vụ">
+        </kendo-grid-column>
+        <kendo-grid-column [headerStyle]="{'font-weight' : 'bold'}" field="title" title="Chức danh">
+        </kendo-grid-column>
+        <kendo-grid-column [headerStyle]="{'font-weight' : 'bold'}" title="Tác vụ">
+          <ng-template kendoGridCellTemplate style="text-align: center;">
+            <button kendoGridEditCommand [primary]="true" data-bs-toggle="modal"
+              data-bs-target="#editModal">Edit</button>
+            &nbsp;
+            <button kendoGridRemoveCommand iconClass="k-icon k-i-delete"></button>
+          </ng-template>
+        </kendo-grid-column>
+      </kendo-grid>
+
+
+      <!-- Modal Create -->
+      <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <form [formGroup]="formCreate" (ngSubmit)="createEmployee()">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm nhân viên</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                              
+                <div class="form-group text-center" >
+                  <br>
+                  <input type="hidden"  formControlName="Avatar" id="base64-create" valuePrimitive="true">
+                  <img id='outputImage' height="150px" width="150px">
+                </div>
+                <div class="form-group ">
+                  <label for="avatar"></label> &nbsp;
+                  <input type='file' accept='image/*' onchange="openFile(event)" id="file-create" data-rule-required=true>  
+                </div>
+
+                <div class="row">
+                  <!-- <div class="form-group col-6">
+                    <label for="IdEmployee">ID</label>
+                    <input type="text" class="form-control" formControlName="IdEmployee" id="IdEmployee" readonly>
+                  </div> -->
+                  <div class="form-group">
+                    <label for="position">Chức vụ</label>
+                    <kendo-dropdownlist formControlName="Position"  [data]="positions" textField="text" valueField="value"
+                      [valuePrimitive]="true" required></kendo-dropdownlist>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-6">
+                    <label for="Firstname">Họ</label>
+                    <input type="text" class="form-control" formControlName="Firstname" id="Firstname"
+                      placeholder="Enter first name" valuePrimitive="true" required>
+                  </div>
+                  <div class="form-group col-6">
+                    <div class="form-group ">
+                      <label for="lastname">Tên</label>
+                      <input type="text" class="form-control" formControlName="Lastname" id="lastname"
+                        placeholder="Enter last name" valuePrimitive="true" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-6">
+                    <label for="department">Phòng ban</label>
+                    <kendo-dropdownlist formControlName="DepartmentId" [data]="dropDownDepartmentItems" textField="name"
+                      valueField="id" [valuePrimitive]="true" required></kendo-dropdownlist>
+                  </div>
+                  <div class="form-group col-6">
+                    <label for="title">Chức danh</label>
+                    <kendo-dropdownlist formControlName="Title" [data]="titles" textField="text" valueField="value"
+                      id="title" [valuePrimitive]="true" required></kendo-dropdownlist>
+                  </div>
+                </div>
+                 
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" [disabled]="!formCreate.valid">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Edit -->
+      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <form [formGroup]="formEdit" (ngSubmit)="editEmployee()">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sửa thông tin nhân viên</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                              
+                <div class="form-group text-center" >
+                  <br>
+                  <input type="hidden"  formControlName="Avatar" id="base64-edit" valuePrimitive="true">
+                  <img id='outputImageEdit' height="150px" width="150px">
+                </div>
+                <div class="form-group ">
+                  <label for="avatar-eidt"></label> &nbsp;
+                  <input type='file' accept='image/*' onchange="openFileEdit(event)" id="file-edit" data-rule-required=true>  
+                </div>
+
+                <div class="row"> 
+                  <div class="form-group col-6">
+                    <label for="IdEmployee">Mã nhân viên</label>
+                    <input type="text" class="form-control" formControlName="IdEmployee" id="IdEmployee" readonly>
+                  </div>
+                  <div class="form-group col-6">
+                    <label for="position">Chức vụ</label>
+                    <kendo-dropdownlist formControlName="Position"  [data]="positions" textField="text" valueField="value"
+                      [valuePrimitive]="true" required></kendo-dropdownlist>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-6">
+                    <label for="Firstname">Họ</label>
+                    <input type="text" class="form-control" formControlName="Firstname" id="Firstname"
+                      placeholder="Enter first name" valuePrimitive="true" required>
+                  </div>
+                  <div class="form-group col-6">
+                    <div class="form-group ">
+                      <label for="lastname">Tên</label>
+                      <input type="text" class="form-control" formControlName="Lastname" id="lastname"
+                        placeholder="Enter last name" valuePrimitive="true" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-6">
+                    <label for="department">Phòng ban</label>
+                    <kendo-dropdownlist formControlName="DepartmentId" [data]="dropDownDepartmentItems" textField="name"
+                      valueField="id" [valuePrimitive]="true" required></kendo-dropdownlist>
+                  </div>
+                  <div class="form-group col-6">
+                    <label for="title">Chức danh</label>
+                    <kendo-dropdownlist formControlName="Title" [data]="titles" textField="text" valueField="value"
+                      id="title" [valuePrimitive]="true" required></kendo-dropdownlist>
+                  </div>
+                </div>
+                 
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!formEdit.valid">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

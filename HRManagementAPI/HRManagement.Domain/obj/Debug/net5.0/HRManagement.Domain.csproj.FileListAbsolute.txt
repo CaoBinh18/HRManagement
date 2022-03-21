@@ -1,0 +1,15 @@
+D:\HRManagement\HRManagement.Domain\bin\Debug\net5.0\HRManagement.Domain.deps.json
+D:\HRManagement\HRManagement.Domain\bin\Debug\net5.0\HRManagement.Domain.runtimeconfig.json
+D:\HRManagement\HRManagement.Domain\bin\Debug\net5.0\HRManagement.Domain.runtimeconfig.dev.json
+D:\HRManagement\HRManagement.Domain\bin\Debug\net5.0\HRManagement.Domain.dll
+D:\HRManagement\HRManagement.Domain\bin\Debug\net5.0\ref\HRManagement.Domain.dll
+D:\HRManagement\HRManagement.Domain\bin\Debug\net5.0\HRManagement.Domain.pdb
+D:\HRManagement\HRManagement.Domain\obj\Debug\net5.0\HRManagement.Domain.csproj.AssemblyReference.cache
+D:\HRManagement\HRManagement.Domain\obj\Debug\net5.0\HRManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\HRManagement\HRManagement.Domain\obj\Debug\net5.0\HRManagement.Domain.AssemblyInfoInputs.cache
+D:\HRManagement\HRManagement.Domain\obj\Debug\net5.0\HRManagement.Domain.AssemblyInfo.cs
+D:\HRManagement\HRManagement.Domain\obj\Debug\net5.0\HRManagement.Domain.csproj.CoreCompileInputs.cache
+D:\HRManagement\HRManagement.Domain\obj\Debug\net5.0\HRManagement.Domain.dll
+D:\HRManagement\HRManagement.Domain\obj\Debug\net5.0\ref\HRManagement.Domain.dll
+D:\HRManagement\HRManagement.Domain\obj\Debug\net5.0\HRManagement.Domain.pdb
+D:\HRManagement\HRManagement.Domain\obj\Debug\net5.0\HRManagement.Domain.genruntimeconfig.cache
