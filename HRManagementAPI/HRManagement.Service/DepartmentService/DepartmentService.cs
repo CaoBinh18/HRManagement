@@ -28,21 +28,14 @@ namespace HRManagement.Service.DepartmentService
             return await departmentRepository.GetDepartmentById(id);
         }
 
-        //public List<int> getAllDepartmentId(List<DepartmentTree> departmentsTree, List<int> listId)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-
-
         public async Task<List<DepartmentTree>> GetDepartmentTree(int id)
         {
             List<Department> departments = await departmentRepository.GetDepartments();
 
-            List<DepartmentTree> departmentsTree = new List<DepartmentTree>();
+            List<DepartmentTree> departmentsTree = new();
             foreach (Department d in departments)
             {
-                departmentsTree.Add(toDepartmentTree(d));
+                departmentsTree.Add(ToDepartmentTree(d));
             }
 
             List<DepartmentTree> hierarchy = new();
@@ -89,7 +82,7 @@ namespace HRManagement.Service.DepartmentService
             return listId;
         }
 
-        private DepartmentTree toDepartmentTree(Department department)
+        private DepartmentTree ToDepartmentTree(Department department)
         {
             DepartmentTree departmentTree = new DepartmentTree();
             departmentTree.Id = department.Id;

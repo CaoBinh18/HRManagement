@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jdLBC8Ul8MtqaPH/KvwsiQrm5tyOAArKVb/eOw1bjFwGqc0xkrIFT2zJzY95txpKqIbaayMww1Hj348JBRWPaA==",
+  "dgSpecHash": "4kO3sfQma3WFrNZl91xsfPZpbCwt5YDccnXk3xFClFI8DFPY1Fm+HsjPWNavsBluQGG8fJW/+Lc3so+2gVxVuw==",
   "success": true,
-  "projectFilePath": "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj",
+  "projectFilePath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

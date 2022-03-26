@@ -1,23 +1,25 @@
 <div class="container">
   <div class="row">
     <div class="left-side-menu col-3">
-      <kendo-treeview kendoTreeViewHierarchyBinding [filterable]="true" kendoTreeViewExpandable 
-        [expandOnFilter]="filterExpandSettings" [nodes]="data"
-        childrenField="children" textField="name" valueField="id" kendoTreeViewSelectable
-        (selectionChange)="handleClickNode($event)"></kendo-treeview>
+      <kendo-treeview kendoTreeViewHierarchyBinding [filterable]="true" kendoTreeViewExpandable
+        [expandOnFilter]="filterExpandSettings" [nodes]="treeNode" childrenField="children" textField="name"
+        valueField="id" kendoTreeViewSelectable (selectionChange)="handleClickNode($event)"></kendo-treeview>
     </div>
 
     <div class="main-content col-9">
       <!-- <kendo-grid [data]="(gridItems | async)!" -->
-      <kendo-grid [resizable]="true" [kendoGridBinding]="gridItems" [pageSize]="5" [skip]="skip"
-        [sort]="sortDescriptor" [sortable]="true" [sortable]="true" [pageable]="true" [filterable]="true" 
-        (pageChange)="pageChange($event)" (sortChange)="handleSortChange($event)" 
-        (edit)="getEmployee($event)" (remove)="removeHandler($event)">
+      <kendo-grid [resizable]="true" [data]="gridItems" [pageSize]="state.take" [skip]="state.skip" [sort]="sortDescriptor"
+        [sortable]="true" [pageable]="true" [filterable]="true" (edit)="getEmployee($event)" (pageChange)="pageChange($event)"
+        (sortChange)="handleSortChange($event)" (remove)="removeEmployee($event)" [height]="450">
 
-        <ng-template kendoGridToolbarTemplate > 
+        <ng-template kendoGridToolbarTemplate>
           <kendo-grid-spacer></kendo-grid-spacer>
-          <button kendoButton [icon]="'k-icon k-i-plus'" fillMode="flat" data-bs-toggle="modal"
-          data-bs-target="#createModal" (click)="showFormCreate()" style="color: blueviolet;">Thêm</button>
+          <!-- <button kendoButton [icon]="'k-icon k-i-plus'" fillMode="flat" data-bs-toggle="modal"
+            data-bs-target="#createModal" (click)="showFormCreate()" style="color: blueviolet;">Thêm</button> -->
+
+          <button kendoButton [icon]="'k-icon k-i-plus'" (click)="open(create)"
+            style="color: blueviolet;">Thêm</button>
+
         </ng-template>
 
         <kendo-grid-column [headerStyle]="{'font-weight' : 'bold'}" field="id" title="Mã nhân viên">
@@ -32,9 +34,10 @@
         </kendo-grid-column>
         <kendo-grid-column [headerStyle]="{'font-weight' : 'bold'}" title="Tác vụ">
           <ng-template kendoGridCellTemplate style="text-align: center;">
-            <button kendoGridEditCommand [primary]="true" data-bs-toggle="modal"
-              data-bs-target="#editModal">Edit</button>
-            &nbsp;
+            <!-- <button kendoGridEditCommand [primary]="true" data-bs-toggle="modal"
+              data-bs-target="#editModal">Edit</button> -->
+            <button kendoGridEditCommand [primary]="true" [icon]="'k-icon k-i-edit'"
+              (click)="open(edit)"></button>
             <button kendoGridRemoveCommand iconClass="k-icon k-i-delete"></button>
           </ng-template>
         </kendo-grid-column>
@@ -42,9 +45,9 @@
 
 
       <!-- Modal Create -->
-      <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      <!-- <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <form [formGroup]="formCreate" (ngSubmit)="createEmployee()">
               <div class="modal-header">
@@ -54,28 +57,29 @@
                 </button>
               </div>
               <div class="modal-body">
-                              
-                <div class="form-group text-center" >
+
+                <div class="form-group text-center">
                   <br>
-                  <input type="hidden"  formControlName="Avatar" id="base64-create" valuePrimitive="true">
+                  <input type="hidden" formControlName="Avatar" id="base64-create" valuePrimitive="true">
                   <img id='outputImage' height="150px" width="150px">
                 </div>
                 <div class="form-group ">
                   <label for="avatar"></label> &nbsp;
-                  <input type='file' accept='image/*' onchange="openFile(event)" id="file-create" data-rule-required=true>  
+                  <input type='file' accept='image/*' onchange="openFile(event)" id="file-create"
+                    data-rule-required=true>
                 </div>
 
                 <div class="row">
-                  <!-- <div class="form-group col-6">
-                    <label for="IdEmployee">ID</label>
-                    <input type="text" class="form-control" formControlName="IdEmployee" id="IdEmployee" readonly>
-                  </div> -->
+
                   <div class="form-group">
                     <label for="position">Chức vụ</label>
-                    <kendo-dropdownlist formControlName="Position"  [data]="positions" textField="text" valueField="value"
-                      [valuePrimitive]="true" required></kendo-dropdownlist>
+                    <kendo-combobox formControlName="Position" [data]="searchPositions" textField="text"
+                      valueField="value" [filterable]="true" (filterChange)="handleFilterPositions($event)"
+                      [valuePrimitive]="true" required>
+                    </kendo-combobox>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="form-group col-6">
                     <label for="Firstname">Họ</label>
@@ -90,31 +94,124 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="form-group col-6">
-                    <label for="department">Phòng ban</label>
-                    <kendo-dropdownlist formControlName="DepartmentId" [data]="dropDownDepartmentItems" textField="name"
-                      valueField="id" [valuePrimitive]="true" required></kendo-dropdownlist>
+                    <label for="department">Phòng ban</label>   
+                    <kendo-dropdowntree  [kendoDropDownTreeHierarchyBinding]="treeNode" [filterable]="true"
+                      kendoDropDownTreeExpandable [expandOnFilter]="filterExpandSettings" childrenField="children" 
+                      textField="name" valueField="id" [valuePrimitive]="true" required>
+                    </kendo-dropdowntree>
                   </div>
                   <div class="form-group col-6">
                     <label for="title">Chức danh</label>
-                    <kendo-dropdownlist formControlName="Title" [data]="titles" textField="text" valueField="value"
-                      id="title" [valuePrimitive]="true" required></kendo-dropdownlist>
+                    <kendo-combobox formControlName="Title" [data]="searchTitles" textField="text" valueField="value"
+                      [filterable]="true" id="title" (filterChange)="handleFilterTitles($event)" [valuePrimitive]="true"
+                      required></kendo-combobox>
                   </div>
                 </div>
-                 
+
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" data-dismiss="modal" [disabled]="!formCreate.valid">Save changes</button>
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" [disabled]="!formCreate.valid">Save
+                  changes</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
             </form>
           </div>
         </div>
-      </div>
+      </div> -->
+
+
+      <ng-template #create let-modal>
+        <div class="modal-content ">
+          <div class="modal-header" style="background-color: rgb(70, 147, 219);">
+            <h4 class="modal-title" id="modal-basic-title">Thêm nhân viên mới</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="formData" (ngSubmit)="createEmployee()">
+
+              <div class="form-group text-center">
+                <br>
+                <input type="hidden" formControlName="Avatar" id="base64-create" valuePrimitive="true">
+                <img id='outputImage' height="200px" width="200px" (click)="fileInput.click()"
+                  src="https://i.stack.imgur.com/l60Hf.png">
+              </div>
+              <div class="form-group" style="display: none;">
+                <label for="avatar"></label> &nbsp;
+                <input #fileInput type='file' accept='image/*' onchange="openFile(event)" id="file-create"
+                  data-rule-required=true>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <kendo-formfield>
+                    <label for="department">Phòng ban</label>
+                    <kendo-dropdowntree formControlName="DepartmentId" [value]="value" 
+                      [kendoDropDownTreeHierarchyBinding]="departmentTree" [filterable]="true" 
+                      kendoDropDownTreeExpandable [expandOnFilter]="filterExpandSettings" childrenField="children" placeholder="Chọn phòng ban"
+                      textField="name" valueField="id" [valuePrimitive]="true" required>
+                    </kendo-dropdowntree>
+                    <kendo-formerror class="kendo-formerror-dropdown">(*) Phòng ban không được để trống</kendo-formerror>
+                  </kendo-formfield>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-6">
+                  <kendo-formfield>
+                  <label for="Firstname">Họ</label>
+                  <input type="text" kendoTextBox formControlName="Firstname" id="Firstname"
+                    placeholder="Nhập họ" valuePrimitive="true" required>
+                    <kendo-formerror class="kendo-formerror-dropdown">(*) Họ không được để trống</kendo-formerror>
+                  </kendo-formfield>
+                </div>
+                <div class="form-group col-6">
+                  <div class="form-group ">
+                    <kendo-formfield>
+                    <label for="lastname">Tên</label>
+                    <input type="text" kendoTextBox formControlName="Lastname" id="lastname"
+                      placeholder="Nhập tên" valuePrimitive="true" required>
+                      <kendo-formerror class="kendo-formerror-dropdown">(*) Tên không được để trống</kendo-formerror>
+                    </kendo-formfield>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-6">
+                  <kendo-formfield>
+                  <label for="position">Chức vụ</label>
+                  <kendo-combobox formControlName="Position" [data]="searchPositions" textField="text" placeholder="Chọn chức vụ"
+                    valueField="value" [filterable]="true" (filterChange)="handleFilterPositions($event)"
+                    [valuePrimitive]="true" required></kendo-combobox>
+                  <kendo-formerror class="kendo-formerror-dropdown">(*) Chức vụ không được để trống</kendo-formerror>
+                </kendo-formfield>
+                </div>
+                <div class="form-group col-6">
+                  <kendo-formfield>
+                  <label for="title">Chức danh</label>
+                  <kendo-combobox formControlName="Title" [data]="searchTitles" textField="text" valueField="value" placeholder="Chọn chức danh"
+                    [filterable]="true" id="title" (filterChange)="handleFilterTitles($event)" [valuePrimitive]="true"
+                    required></kendo-combobox>
+                    <kendo-formerror class="kendo-formerror-dropdown">(*) Chức danh không được để trống</kendo-formerror>
+                  </kendo-formfield>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary" (click)="createEmployee()">Lưu</button>
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Đóng</button>
+          </div>
+        </div>
+      </ng-template>
+
 
       <!-- Modal Edit -->
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      <!-- <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -126,26 +223,29 @@
                 </button>
               </div>
               <div class="modal-body">
-                              
-                <div class="form-group text-center" >
+
+                <div class="form-group text-center">
                   <br>
-                  <input type="hidden"  formControlName="Avatar" id="base64-edit" valuePrimitive="true">
+                  <input type="hidden" formControlName="Avatar" id="base64-edit" valuePrimitive="true">
                   <img id='outputImageEdit' height="150px" width="150px">
                 </div>
                 <div class="form-group ">
                   <label for="avatar-eidt"></label> &nbsp;
-                  <input type='file' accept='image/*' onchange="openFileEdit(event)" id="file-edit" data-rule-required=true>  
+                  <input type='file' accept='image/*' onchange="openFileEdit(event)" id="file-edit"
+                    data-rule-required=true>
                 </div>
 
-                <div class="row"> 
+                <div class="row">
                   <div class="form-group col-6">
                     <label for="IdEmployee">Mã nhân viên</label>
                     <input type="text" class="form-control" formControlName="IdEmployee" id="IdEmployee" readonly>
                   </div>
                   <div class="form-group col-6">
                     <label for="position">Chức vụ</label>
-                    <kendo-dropdownlist formControlName="Position"  [data]="positions" textField="text" valueField="value"
-                      [valuePrimitive]="true" required></kendo-dropdownlist>
+                    <kendo-combobox formControlName="Position" [data]="searchPositions" textField="text"
+                      valueField="value" [filterable]="true" (filterChange)="handleFilterPositions($event)"
+                      [valuePrimitive]="true" required>
+                    </kendo-combobox>
                   </div>
                 </div>
                 <div class="row">
@@ -170,20 +270,111 @@
                   </div>
                   <div class="form-group col-6">
                     <label for="title">Chức danh</label>
-                    <kendo-dropdownlist formControlName="Title" [data]="titles" textField="text" valueField="value"
-                      id="title" [valuePrimitive]="true" required></kendo-dropdownlist>
+                    <kendo-combobox formControlName="Title" [data]="searchTitles" textField="text" valueField="value"
+                      [filterable]="true" id="title" (filterChange)="handleFilterTitles($event)" [valuePrimitive]="true"
+                      required>
+                    </kendo-combobox>
                   </div>
                 </div>
-                 
+
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!formEdit.valid">Save changes</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!formEdit.valid">Save
+                  changes</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
             </form>
           </div>
         </div>
-      </div>
+      </div> -->
+
+      <!-- Modal Edit -->
+      <ng-template #edit let-modal>
+        <div class="modal-content ">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Chỉnh sửa thông tin nhân viên</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="formData" (ngSubmit)="editEmployee()">
+
+              <div class="form-group text-center">
+                <br>
+                <input type="hidden" formControlName="Avatar" id="base64-edit" valuePrimitive="true">
+                <img id='outputImageEdit' height="200px" width="200px" (click)="fileInput.click()"
+                  src="https://i.stack.imgur.com/l60Hf.png">
+              </div>
+              <div class="form-group" style="display: none;">
+                <label for="avatar-eidt"></label>
+                <input #fileInput type='file' accept='image/*' onchange="openFileEdit(event)" id="file-edit"
+                  data-rule-required=true>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-6">
+                  <label for="IdEmployee">Mã nhân viên</label>
+                  <input kendoTextBox type="text" formControlName="IdEmployee" id="IdEmployee" readonly>
+                </div>
+                <div class="form-group col-6">
+                  <kendo-formfield>
+                  <label for="position">Chức vụ</label>
+                  <kendo-combobox formControlName="Position" [data]="searchPositions" textField="text"
+                    valueField="value" [filterable]="true" (filterChange)="handleFilterPositions($event)"
+                    [valuePrimitive]="true" required></kendo-combobox>
+                  <kendo-formerror class="kendo-formerror-dropdown">(*) Chức vụ không được để trống</kendo-formerror>
+                  </kendo-formfield>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-6">
+                  <kendo-formfield>
+                  <label for="Firstname">Họ</label>
+                  <input type="text" kendoTextBox formControlName="Firstname" id="Firstname"
+                    placeholder="Enter first name" valuePrimitive="true" required>
+                    <kendo-formerror class="kendo-formerror-dropdown">(*) Họ không được để trống</kendo-formerror>
+                  </kendo-formfield>
+                </div>
+                <div class="form-group col-6">
+                  <div class="form-group ">
+                  <kendo-formfield>
+                    <label for="lastname">Tên</label>
+                    <input type="text" kendoTextBox formControlName="Lastname" id="lastname"
+                      placeholder="Enter last name" valuePrimitive="true" required>
+                      <kendo-formerror class="kendo-formerror-dropdown">(*) Tên không được để trống</kendo-formerror>                  
+                  </kendo-formfield>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-6">
+                  <kendo-formfield>
+                  <label for="department">Phòng ban</label>
+                  <kendo-dropdowntree formControlName="DepartmentId" [kendoDropDownTreeHierarchyBinding]="departmentTree" [filterable]="true" [value]="value" [dataItem]="dataItem"
+                    kendoDropDownTreeExpandable [expandOnFilter]="filterExpandSettings" childrenField="children" 
+                    textField="name" valueField="id" [valuePrimitive]="true" required>
+                  </kendo-dropdowntree>
+                  <kendo-formerror class="kendo-formerror-dropdown">(*) Phòng ban không được để trống</kendo-formerror>
+                </kendo-formfield>
+                </div>
+                <div class="form-group col-6">
+                  <kendo-formfield>
+                  <label for="title">Chức danh</label>
+                  <kendo-combobox formControlName="Title" [data]="searchTitles" textField="text" valueField="value"
+                    [filterable]="true" id="title" (filterChange)="handleFilterTitles($event)" [valuePrimitive]="true" required>
+                  </kendo-combobox>
+                    <kendo-formerror class="kendo-formerror-dropdown">(*) Chức danh không được để trống</kendo-formerror>
+                  </kendo-formfield>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary" (click)="editEmployee()">Sửa</button>
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Đóng</button>
+          </div>
+        </div>
+      </ng-template>
 
     </div>
   </div>

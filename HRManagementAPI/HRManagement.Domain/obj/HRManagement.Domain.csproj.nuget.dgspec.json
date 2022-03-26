@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj": {}
+    "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj": {}
   },
   "projects": {
-    "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj": {
+    "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj",
+        "projectUniqueName": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj",
         "projectName": "HRManagement.Domain",
-        "projectPath": "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj",
+        "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\HRManagement\\HRManagement.Domain\\obj\\",
+        "outputPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HRManagement\\HRManagement.API\\HRManagement.API.csproj": {}
+    "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.API\\HRManagement.API.csproj": {}
   },
   "projects": {
-    "D:\\HRManagement\\HRManagement.API\\HRManagement.API.csproj": {
+    "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.API\\HRManagement.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HRManagement\\HRManagement.API\\HRManagement.API.csproj",
+        "projectUniqueName": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.API\\HRManagement.API.csproj",
         "projectName": "HRManagement.API",
-        "projectPath": "D:\\HRManagement\\HRManagement.API\\HRManagement.API.csproj",
+        "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.API\\HRManagement.API.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\HRManagement\\HRManagement.API\\obj\\",
+        "outputPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,14 +28,14 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj": {
-                "projectPath": "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj"
+              "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj": {
+                "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj"
               },
-              "D:\\HRManagement\\HRManagement.Repository\\HRManagement.Repository.csproj": {
-                "projectPath": "D:\\HRManagement\\HRManagement.Repository\\HRManagement.Repository.csproj"
+              "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Repository\\HRManagement.Repository.csproj": {
+                "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Repository\\HRManagement.Repository.csproj"
               },
-              "D:\\HRManagement\\HRManagement.Service\\HRManagement.Service.csproj": {
-                "projectPath": "D:\\HRManagement\\HRManagement.Service\\HRManagement.Service.csproj"
+              "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Service\\HRManagement.Service.csproj": {
+                "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Service\\HRManagement.Service.csproj"
               }
             }
           }
@@ -101,14 +101,14 @@
         }
       }
     },
-    "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj": {
+    "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj",
+        "projectUniqueName": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj",
         "projectName": "HRManagement.Domain",
-        "projectPath": "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj",
+        "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\HRManagement\\HRManagement.Domain\\obj\\",
+        "outputPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -177,14 +177,14 @@
         }
       }
     },
-    "D:\\HRManagement\\HRManagement.Repository\\HRManagement.Repository.csproj": {
+    "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Repository\\HRManagement.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HRManagement\\HRManagement.Repository\\HRManagement.Repository.csproj",
+        "projectUniqueName": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Repository\\HRManagement.Repository.csproj",
         "projectName": "HRManagement.Repository",
-        "projectPath": "D:\\HRManagement\\HRManagement.Repository\\HRManagement.Repository.csproj",
+        "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Repository\\HRManagement.Repository.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\HRManagement\\HRManagement.Repository\\obj\\",
+        "outputPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -201,8 +201,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj": {
-                "projectPath": "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj"
+              "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj": {
+                "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj"
               }
             }
           }
@@ -216,6 +216,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -235,14 +241,14 @@
         }
       }
     },
-    "D:\\HRManagement\\HRManagement.Service\\HRManagement.Service.csproj": {
+    "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Service\\HRManagement.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HRManagement\\HRManagement.Service\\HRManagement.Service.csproj",
+        "projectUniqueName": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Service\\HRManagement.Service.csproj",
         "projectName": "HRManagement.Service",
-        "projectPath": "D:\\HRManagement\\HRManagement.Service\\HRManagement.Service.csproj",
+        "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Service\\HRManagement.Service.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\HRManagement\\HRManagement.Service\\obj\\",
+        "outputPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -259,11 +265,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj": {
-                "projectPath": "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj"
+              "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj": {
+                "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj"
               },
-              "D:\\HRManagement\\HRManagement.Repository\\HRManagement.Repository.csproj": {
-                "projectPath": "D:\\HRManagement\\HRManagement.Repository\\HRManagement.Repository.csproj"
+              "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Repository\\HRManagement.Repository.csproj": {
+                "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Repository\\HRManagement.Repository.csproj"
               }
             }
           }

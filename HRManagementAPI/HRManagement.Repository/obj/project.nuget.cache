@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5T2l/JS5sFYoLpDH/QqaYeYTW13eCyW2/Wg7e/+uIOrjSxa73hpg10agYQZt/rYCa9dt8/O3oWIijRTKdvbSag==",
+  "dgSpecHash": "nf/yTM5r8zzRozkPDShJZBgNOIqZUbxMSud1TzIooJQ3DS2pXjCtnN/SCyW74m/zicS5nfvJS6p7CgIPouzTbg==",
   "success": true,
-  "projectFilePath": "D:\\HRManagement\\HRManagement.Repository\\HRManagement.Repository.csproj",
+  "projectFilePath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Repository\\HRManagement.Repository.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.10\\microsoft.entityframeworkcore.5.0.10.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.10\\microsoft.entityframeworkcore.abstractions.5.0.10.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.10\\microsoft.entityframeworkcore.analyzers.5.0.10.nupkg.sha512",

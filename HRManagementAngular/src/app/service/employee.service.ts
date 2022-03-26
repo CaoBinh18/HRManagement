@@ -50,28 +50,5 @@ export class EmployeeService {
   public getAllEmployeesTreeByDepartmentId(id: number): Observable<any[]> {
     return this.http.get<any[]>(API_URL + `/EmployeeOfTreeByDepartmentId/${id}`);
   }
-
-  public allEmployees(): any[]{
-    let arr = new Array() ;
-    this.getAll().subscribe((data)=>{
-      data.forEach(element => {
-       arr.push({
-         element
-       })
-      });
-    })
-    return arr ;   
-  }
-
-  public allEmployeesByDepartmnetId(id: number): any[]{
-    let arr = new Array() ;
-    this.getAllEmployeesByDepartmnetId(id).subscribe((data)=>{
-      data.forEach(element => {
-       arr.push({
-         element
-       })
-      });
-    })
-    return arr ;   
-  }
+  
 }

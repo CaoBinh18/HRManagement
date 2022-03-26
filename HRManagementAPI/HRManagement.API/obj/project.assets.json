@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "Dapper/2.0.123": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Dapper.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -541,6 +550,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "Dapper": "2.0.123",
           "HRManagement.Domain": "1.0.0"
         },
         "compile": {
@@ -567,6 +577,24 @@
     }
   },
   "libraries": {
+    "Dapper/2.0.123": {
+      "sha512": "RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
+      "type": "package",
+      "path": "dapper/2.0.123",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Dapper.png",
+        "dapper.2.0.123.nupkg.sha512",
+        "dapper.nuspec",
+        "lib/net461/Dapper.dll",
+        "lib/net461/Dapper.xml",
+        "lib/net5.0/Dapper.dll",
+        "lib/net5.0/Dapper.xml",
+        "lib/netstandard2.0/Dapper.dll",
+        "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
     "Humanizer.Core/2.8.26": {
       "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "type": "package",
@@ -1677,11 +1705,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HRManagement\\HRManagement.API\\HRManagement.API.csproj",
+      "projectUniqueName": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.API\\HRManagement.API.csproj",
       "projectName": "HRManagement.API",
-      "projectPath": "D:\\HRManagement\\HRManagement.API\\HRManagement.API.csproj",
+      "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.API\\HRManagement.API.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\HRManagement\\HRManagement.API\\obj\\",
+      "outputPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1698,14 +1726,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj": {
-              "projectPath": "D:\\HRManagement\\HRManagement.Domain\\HRManagement.Domain.csproj"
+            "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj": {
+              "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Domain\\HRManagement.Domain.csproj"
             },
-            "D:\\HRManagement\\HRManagement.Repository\\HRManagement.Repository.csproj": {
-              "projectPath": "D:\\HRManagement\\HRManagement.Repository\\HRManagement.Repository.csproj"
+            "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Repository\\HRManagement.Repository.csproj": {
+              "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Repository\\HRManagement.Repository.csproj"
             },
-            "D:\\HRManagement\\HRManagement.Service\\HRManagement.Service.csproj": {
-              "projectPath": "D:\\HRManagement\\HRManagement.Service\\HRManagement.Service.csproj"
+            "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Service\\HRManagement.Service.csproj": {
+              "projectPath": "D:\\project\\HRManagement\\HRManagementAPI\\HRManagement.Service\\HRManagement.Service.csproj"
             }
           }
         }

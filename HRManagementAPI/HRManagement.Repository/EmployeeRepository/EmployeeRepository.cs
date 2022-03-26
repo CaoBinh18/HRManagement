@@ -23,8 +23,8 @@ namespace HRManagement.Repository.EmployeeRepository
             try
             {
                 context.Employees.Add(employee);
-                var employeeId = await context.SaveChangesAsync();
-                employee.Id = employeeId;
+                await context.SaveChangesAsync();
+                //employee.Id = employeeId;
                 return employee;
             }
             catch (Exception)

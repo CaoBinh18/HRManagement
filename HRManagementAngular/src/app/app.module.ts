@@ -14,6 +14,7 @@ import { ButtonsModule } from "@progress/kendo-angular-buttons";
 import { InputsModule } from "@progress/kendo-angular-inputs";
 import { TreeViewModule } from "@progress/kendo-angular-treeview";
 import { LabelModule } from "@progress/kendo-angular-label";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -36,7 +37,8 @@ import { LabelModule } from "@progress/kendo-angular-label";
     InputsModule,
     TreeViewModule,
     LabelModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
